@@ -1,0 +1,38 @@
+def Cam_Case(list):
+    listA = list[0]
+    listB = list[2]
+    list_text = list[4:]
+    i = 0
+
+    if listA == 'S':
+        if '()' in list_text:
+            list_text = list_text[:-2]
+        while i < len(list_text):
+            if list_text[i].istitle() and (i != 0):
+                list_text = list_text[:i] + " " + list_text[i:]
+                i += 1
+            i += 1
+        list_text = list_text.lower()
+
+    if listA == 'C':
+        list_text_i0 = list_text[0]
+        list_text = list_text.title()
+        while i < len(list_text):
+            if list_text[i] == ' ':
+                list_text = list_text[:i] + list_text[i+1:]
+                i -= 1
+            i += 1
+        if listB != 'C':
+            list_text = list_text_i0 + list_text[1:]
+        if listB == 'M':
+            list_text = list_text + "()"
+
+    print(list_text)
+    return
+
+while (True):
+    try:
+        list1 = input().rstrip() #!!!.rstrip() is nessecary to delete "empty" symbols at the end
+        Cam_Case(list1)
+    except EOFError:
+        break
