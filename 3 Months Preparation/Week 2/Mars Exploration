@@ -1,0 +1,38 @@
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'marsExploration' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+def marsExploration(s):
+     #Write your code here
+    bad_sig = 0
+    i = 0
+    while i < len(s):
+        if s[i:i+3] != 'SOS':
+            if s[i] != 'S':
+                bad_sig += 1
+            if s[i + 1] != 'O':
+                bad_sig += 1
+            if s[i + 2] != 'S':
+                bad_sig += 1
+        i += 3
+    return bad_sig
+
+#if __name__ == '__main__':
+    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+s = input()
+result = marsExploration(s)
+print(result)
+    #fptr.write(str(result) + '\n')
+
+    #fptr.close()
+
