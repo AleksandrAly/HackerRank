@@ -1,0 +1,47 @@
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'pickingNumbers' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY a as parameter.
+#
+
+def pickingNumbers(a):
+    # Write your code here
+    cur_long = 1
+    max_long = 1
+    a.sort()
+    curr_min = a[0]
+    for i in range(1, len(a)):
+        if abs(a[i] - curr_min) < 2:
+            cur_long += 1
+            if cur_long > max_long:
+                max_long = cur_long
+            if curr_min > a[i]:
+                curr_min = a[i]
+            print(cur_long, i)
+        else:
+            curr_min = a[i]
+            cur_long = 1
+    return max_long
+
+
+if __name__ == '__main__':
+    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    a = list(map(int, input().rstrip().split()))
+
+    result = pickingNumbers(a)
+
+    print(result)
+
+    #fptr.write(str(result) + '\n')
+
+    #fptr.close()
