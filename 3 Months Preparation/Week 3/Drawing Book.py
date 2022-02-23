@@ -15,6 +15,11 @@ import sys
 
 def pageCount(n, p):
     # Write your code here
+    if n % 2 == 0:
+        n += 1
+    way = min(p, (n - p))
+    return way // 2
+
 
 if __name__ == '__main__':
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')
